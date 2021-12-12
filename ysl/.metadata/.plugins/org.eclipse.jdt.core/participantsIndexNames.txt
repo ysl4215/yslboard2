@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+C:\spring\ysl\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2263300109.index
+\ysl\src\main\java
+C:\spring\ysl\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3859630528.index
+\ysl\src\main\java
+C:\spring\ysl\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3817266934.index
+\ysl\src\main\java
+C:\spring\ysl\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4265207683.index
+\invenboard\src\main\java
+C:\spring\ysl\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2385472290.index
+\ysl\src\main\java
