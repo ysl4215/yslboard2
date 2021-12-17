@@ -1,0 +1,14 @@
+package com.swempire.web.board.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class LoginDAOImpl implements LoginDAO{
+
+	@Override
+	public void loginSelect() {
+		
+		
+	}
+
+}

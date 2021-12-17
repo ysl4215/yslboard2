@@ -1,0 +1,19 @@
+package com.swempire.web.board.service;
+
+import org.springframework.stereotype.Service;
+
+import com.swempire.web.board.dao.LoginDAO;
+
+@Service
+public class LoginServiceImpl implements LoginService{
+	
+	@interface
+	private LoginDAO loginDAO;
+	
+	@Override
+	public void loginSelect() throws Exception {
+		
+		
+	}
+
+}

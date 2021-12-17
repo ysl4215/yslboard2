@@ -1,0 +1,6 @@
+package com.swempire.web.board.service;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+}

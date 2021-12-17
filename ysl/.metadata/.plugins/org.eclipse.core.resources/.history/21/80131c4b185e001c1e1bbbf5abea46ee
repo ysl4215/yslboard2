@@ -1,0 +1,15 @@
+package com.swempire.web.board.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.swempire.web.board.model.LoginVO;
+
+@Repository
+public class LoginDAOImpl implements LoginDAO{
+
+	public LoginVO loginSelect() {
+		
+		
+	}
+
+}

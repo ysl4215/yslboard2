@@ -1,0 +1,6 @@
+package com.swempire.web.board.dao;
+
+public interface LoginDAO {
+	public LoginVO loginSelect();
+	
+}

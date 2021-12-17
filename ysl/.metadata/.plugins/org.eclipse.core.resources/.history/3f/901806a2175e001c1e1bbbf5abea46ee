@@ -1,0 +1,11 @@
+package com.swempire.web.board.dao;
+
+public class LoginDAOImpl implements LoginDAO{
+
+	@Override
+	public void loginSelect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

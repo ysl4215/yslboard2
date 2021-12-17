@@ -1,0 +1,8 @@
+package com.swempire.web.board.dao;
+
+import com.swempire.web.board.model.LoginVO;
+
+public interface LoginDAO {
+	public LoginVO loginSelect();
+	
+}
