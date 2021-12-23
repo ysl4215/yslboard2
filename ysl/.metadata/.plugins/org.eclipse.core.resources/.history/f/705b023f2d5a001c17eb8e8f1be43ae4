@@ -1,8 +1,0 @@
-package com.swempire.web;
-
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring/dataSource-context.xml" })
-public class MysqlConnectionTest {
-
-}

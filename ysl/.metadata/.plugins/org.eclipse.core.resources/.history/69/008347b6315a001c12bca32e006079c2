@@ -1,5 +1,0 @@
-package com.swempire.web.board.dao;
-
-public class BoardDAOImpl {
-
-}

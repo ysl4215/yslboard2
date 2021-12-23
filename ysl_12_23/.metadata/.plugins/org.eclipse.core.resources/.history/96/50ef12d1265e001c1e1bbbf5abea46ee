@@ -1,0 +1,7 @@
+package com.swempire.web.board.service;
+
+import com.swempire.web.board.model.LoginVO;
+
+public interface LoginService {
+	public void loginSelect() throws Exception;
+}

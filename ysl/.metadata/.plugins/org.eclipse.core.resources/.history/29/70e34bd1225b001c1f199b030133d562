@@ -1,5 +1,0 @@
-package com.swempire.web.error.controller;
-
-public class NotFoundException {
-
-}
