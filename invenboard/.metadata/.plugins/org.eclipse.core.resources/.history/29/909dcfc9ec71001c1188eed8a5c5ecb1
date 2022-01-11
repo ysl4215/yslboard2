@@ -1,0 +1,12 @@
+package com.swempire.web.board.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class SignupDAO {
+	
+	public String signupInsert() {
+		return "";
+	}
+	
+}

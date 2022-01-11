@@ -1,5 +1,0 @@
-package com.swempire.web.board.interceptor;
-
-public class SessionInterceptor {
-
-}

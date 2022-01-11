@@ -1,0 +1,18 @@
+package com.swempire.web.board.dao;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class SignupDAO {
+	
+	@Inject
+	private SqlSession sqlSession;
+	
+	public String signupInsert() {
+		return "";
+	}
+	
+}

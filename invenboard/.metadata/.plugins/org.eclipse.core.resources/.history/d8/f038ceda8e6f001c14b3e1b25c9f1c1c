@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+body {
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+
+.step_url {
+    /*@naver.com*/
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+

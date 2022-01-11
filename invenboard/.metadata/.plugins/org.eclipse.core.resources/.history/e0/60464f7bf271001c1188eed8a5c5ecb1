@@ -1,0 +1,19 @@
+package com.swempire.web.board.service;
+
+import java.util.List;
+
+import com.swempire.web.board.model.SignupVO;
+
+public interface UserService {
+
+	public List<SignupVO> getUserList() throws Exception;
+
+	public SignupVO getUserInfo(String uid) throws Exception;
+
+	public void insertUser(SignupVO userVO) throws Exception;
+
+	public void updateUser(SignupVO userVO) throws Exception;
+
+	public void deleteUser(String uid) throws Exception;
+
+}
