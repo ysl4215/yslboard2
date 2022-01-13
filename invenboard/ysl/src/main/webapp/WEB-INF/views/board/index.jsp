@@ -178,7 +178,7 @@ function fn_prev(page, range, rangeSize, searchType, keyword) {
 				<button type="button" class="btn btn-sm btn-primary"
 					id="btnList">목록</button>
 					<button type="button" class="btn btn-sm btn-primary"
-					id="" onclick="location.href='/login/login'">로그아웃</button>
+					id="" onclick="location.href='/login'">로그아웃</button>
 			</div>
 			
 			<br>

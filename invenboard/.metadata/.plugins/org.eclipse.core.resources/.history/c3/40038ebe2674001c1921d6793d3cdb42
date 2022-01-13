@@ -1,0 +1,30 @@
+package com.swempire.web.board.model;
+
+public class LoginVO {
+	private	String id;
+	private	String pw;
+	private String user_check;
+	
+	
+	public String getUser_check() {
+		return user_check;
+	}
+	public void setUser_check(String user_check) {
+		this.user_check = user_check;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	
+	
+}

@@ -1,13 +1,13 @@
 package com.swempire.web.board.model;
 
 public class SignupVO {
-	String id;
-	String pw;
-	String name;
-	String birth;
-	String gender;
-	String email;
-	String phone;
+private String id;
+private	String pw;
+private	String name;
+private	String birth;
+private	String gender;
+private	String email;
+private	String phone;
 	
 
 

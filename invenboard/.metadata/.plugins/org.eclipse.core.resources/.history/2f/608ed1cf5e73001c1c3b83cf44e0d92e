@@ -1,0 +1,15 @@
+.headline {
+	width: 100%;
+	margin: 0 auto;
+	/*height: 112px;*/
+	height: 92px;
+	background: #f6f6f6 url('/resources/common/img/flyLogo.png') no-repeat center top;
+	margin-top: 0px;
+	cursor:pointer; 
+	cursor:hand; 
+}
+
+#mobileLogin {
+	text-align: center;
+}
+

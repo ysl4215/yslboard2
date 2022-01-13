@@ -42,6 +42,6 @@ public class SignupController {
 		signupservice.signupInsert(signupvo);
 		
 		
-		return "login/login";
+		return "main/main";
 	}
 }

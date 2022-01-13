@@ -1,20 +1,43 @@
 package com.swempire.web.board.model;
 
 public class LoginVO {
-	String uid;
-	String pwd;
+	private	String id;
+	private	String pw;
+	private String remember_userId;
+	private String checked;
 	
-	public String getUid() {
-		return uid;
+	
+
+	public String getChecked() {
+		return checked;
 	}
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setChecked(String checked) {
+		this.checked = checked;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getRemember_userId() {
+		return remember_userId;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setRemember_userId(String remember_userId) {
+		this.remember_userId = remember_userId;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	@Override
+	public String toString() {
+		return "LoginVO [id=" + id + ", pw=" + pw + ", remember_userId=" + remember_userId + ", checked=" + checked
+				+ "]";
+	}
+
+	
 	
 }

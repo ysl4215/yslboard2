@@ -1,0 +1,48 @@
+package com.swempire.web.board.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Service;
+
+import com.swempire.web.board.dao.LoginDAO;
+import com.swempire.web.board.model.LoginVO;
+
+@Service
+public class LoginService{
+	
+	@Inject
+	private LoginDAO loginDAO;
+	
+	@Inject
+	private HttpServletResponse response;
+	
+	
+
+	public LoginVO loginSelect(LoginVO loginVO)throws Exception {			
+		return loginDAO.loginSelect(loginVO);
+}
+	
+	
+	public String loginCookie(LoginVO loginVO) throws Exception{
+		Cookie cookie = new Cookie("user_check",loginVO.getId());
+		String checked = loginVO.getChecked();
+		
+		if(checked == "true") {
+			response.addCookie(cookie);
+			System.out.println(response.addCookie(cookie).toSting);
+			return "";
+		} else {
+			 cookie.setMaxAge(0);
+			 response.addCookie(cookie);
+			 System.out.println(response.addCookie(cookie));
+			return "";
+		}
+		
+		
+	}
+
+}

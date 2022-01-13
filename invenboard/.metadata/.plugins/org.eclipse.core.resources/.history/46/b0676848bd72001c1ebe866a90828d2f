@@ -1,0 +1,27 @@
+package com.swempire.web.board.service;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
+
+import com.swempire.web.board.dao.SignupDAO;
+import com.swempire.web.board.model.SignupVO;
+
+@Service
+public class SignupService {
+	
+	@Inject
+	SignupDAO signupdao;
+	
+	@Inject
+	SqlSession sqlsession;
+	
+	
+	
+	public void signupInsert(SignupVO signupvo) {
+		
+		signupdao.signupInsert(signupvo);
+	}
+	
+}

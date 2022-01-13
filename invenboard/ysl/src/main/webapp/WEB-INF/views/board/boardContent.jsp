@@ -275,6 +275,7 @@ body {
 
 					<div class="col-sm-10">
 						<form:textarea path="content" id="content" class="form-control" rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
+						
 					</div>
 
 					<div class="col-sm-2">

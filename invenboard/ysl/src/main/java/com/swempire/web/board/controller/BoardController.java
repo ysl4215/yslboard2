@@ -64,15 +64,13 @@ public class BoardController {
 			@RequestParam(required = false) String keyword, @ModelAttribute("search") Search search,
 			HttpServletRequest request) throws Exception {
 
-		String uid = request.getParameter("uid");
-		String pwd = request.getParameter("pwd");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 
-		loginVO.setPwd(pwd);
-		loginVO.setUid(uid);
+		loginVO.setPw(pw);
+		loginVO.setId(id);
 
 		loginService.loginSelect(loginVO);
-
-		System.out.println(loginService.loginSelect(loginVO));
 
 		model.addAttribute("search", search);
 		search.setSearchType(searchType);

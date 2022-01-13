@@ -18,7 +18,7 @@
 
 <!--메뉴바 추가 부분-->
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">유승리 BOARD</a>
+  <a class="navbar-brand" href="#">Inven BOARD</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon" ></span>
   </button>

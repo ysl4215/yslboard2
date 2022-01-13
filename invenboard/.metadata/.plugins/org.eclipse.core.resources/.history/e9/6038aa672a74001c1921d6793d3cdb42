@@ -1,0 +1,31 @@
+function loginBtn(){
+	
+	var id= document.getElementById('id').value;
+	var pw= document.getElementById('pw').value;
+	var remember_userId = document.getElementById('remember_userId').checked;
+	
+	$.ajax({
+		type : 'post', 
+		url : '/login',
+		data :{
+			id : id,
+			pw : pw,
+			remember_userId : remember_userId
+		},
+		success : function(data){
+			alert(data);
+		},
+		error : function(){
+			alert("error");
+		}
+		
+	})
+	
+	
+}
+
+function checkbox(a){
+	var checked = document.getElementById('checked').checked;
+	
+	alert(checked)
+}

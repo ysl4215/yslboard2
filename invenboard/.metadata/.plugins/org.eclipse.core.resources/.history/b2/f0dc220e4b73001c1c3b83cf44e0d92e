@@ -1,0 +1,298 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+#div_root{
+margin:auto;
+width:100%;
+}
+
+#div_head{
+width:100%;
+height:100px;
+background-color:red;
+}
+
+#div_top{
+width:100%;
+height:50px;
+background-color:#82FA58;
+text-align:center;
+}
+
+#div_left{
+width:20%;
+height:800px;
+float:left;
+background-color:#819FF7;
+text-align:left;
+}
+
+#div_con{
+width:80%;
+height:700px;
+float:left;
+text-align:center;
+}
+#div_bottom{
+width:100%;
+height:200px;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<div id="div_root">
+ <div id="div_head"></div>
+ <div id="div_top">메인메뉴</div>
+ 
+ 
+ 
+ 
+ <div id="div_left">
+ <h2>
+ <a href="https://black.inven.co.kr/" title="메인 페이지로 이동">검은사막 인벤</a>
+ </h2>
+ <div class="log-out">
+        <p>로그인하고<br><span class="color">출석보상</span> 받으세요!</p>
+        <a href="#" onclick="login(); return false;" class="login-btn">
+            로그인        </a>
+
+                <div>
+            <a href="https://member.inven.co.kr/user/pro/join" onclick="return onclickHref(event, window.INVEN.Links.signIn);">회원가입</a>
+            <a href="https://member.inven.co.kr/user/scorpio/find/info" onclick="return onclickHref(event, window.INVEN.Links.findIdPw);">ID/PW 찾기</a>
+        </div>
+            </div>
+            <div class="search" id="__left-search">
+    <form action="https://www.inven.co.kr/search" method="GET">
+        <input type="text" name="keyword" placeholder="검은사막 인벤 통합검색">
+        <button type="submit">검색</button>
+    </form>
+</div>
+
+<div class="left-menu">
+        <div class="banner-layout1">
+                                <div class="left-module">
+
+<div id="module170525">
+	<div class="title">검은사막 시계</div>
+	<div class="day pm" id="daytype">PM</div>
+	<div class="number hours01 num0" id="hours1">0</div>
+	<div class="number hours02 num1" id="hours2">1</div>
+	<div class="colon">:</div>
+	<div class="number minutes01 num1" id="minutes1">1</div>
+	<div class="number minutes02 num8" id="minutes2">8</div>
+	<div class="clock_text text1" id="clock_text">모르코 상점/몬스터 온화</div>
+</div>
+ 
+ <script type="text/javascript">
+ 	
+$(document).ready(function() {
+ 	setTimeout("blackclock()", 0); 
+});
+
+function conv_seconds(hour, min, sec){ 
+	 timeH = hour*60*60;
+	 timeI = min*60;
+	 timeS = sec; 
+
+	return timeH+timeI+timeS; 
+}
+
+function conv_time(sec){ 
+	timeH = Math.floor((sec/60/60)%24);
+	timeI = Math.floor((sec/60)%60); 
+	timeS = Math.floor(sec%60);
+ 
+	if(timeH<=9){
+		timeH = "0"+timeH; 
+	}
+	if(timeI<=9){
+		timeI = "0"+timeI; 
+	}
+	if(timeS<=9){
+		timeS = "0"+timeS; 
+	}
+
+	return timeH+':'+timeI+':'+timeS;
+}
+
+function conv_gametimeDay(gameTime, nowTime, ntime, type){
+	if(type == 'pm'){ // 인게임 밤 시간 흐름 계산  1분 = 13.5초  
+	 	$('#clock_text').removeClass('text1').text();
+	 	$('#clock_text').addClass('text2').text('파트리지오 상점/몬스터 흉폭');
+		sec = 13.5;
+	}else{ // 인게임 낮시간 흐름 계산  1분 = 4.5초 
+	 	$('#clock_text').removeClass('text2').text();
+	 	$('#clock_text').addClass('text1').text('모르코 상점/몬스터 온화');
+		sec = 4.5; 
+	} 
+
+ 	tmpTime = nowTime-gameTime; 
+ 	tmpTime = tmpTime*sec;  
+ 	result =  ntime+tmpTime; 
+ 	return result; 
+}
+
+function blackclock(){
+
+	 var nowTime = new Date();
+	 var nowHours = nowTime.getHours();
+	 var nowMin = nowTime.getMinutes();
+	 var nowSec = nowTime.getSeconds();
+  
+	 nowTime = conv_seconds(nowHours, nowMin, nowSec);  
+	//console.log('현재시간 - '+nowHours+':'+nowMin+':'+nowSec);
+
+	 // 게임시간 낮 
+	 var dayH = 7; 
+	 var dayM = 0; 
+	 var dayS = 0; 
+	 dayTime = conv_seconds(dayH, dayM, dayS);  
+
+	 // 게임시간 밤
+	 var nightH = 22; 
+	 var nightM = 0; 
+	 var nightS = 0; 
+	 nightTime = conv_seconds(nightH, nightM, nightS);  
+
+	 // 00:40 - 2400  , 1:20 - 4800, 4:40 - 16800, 5:20 - 19200, 8:40 -31200, 9:20 - 33600, 12:40 - 45600, 13:20 - 48000, 16:40 - 60000, 17:20 - 62400, 20:40 - 74400 , 21:20 - 76800 
+
+	 // if(nowTime == 2400 || nowTime == 16800 || nowTime == 31200 || nowTime == 45600 || nowTime == 60000 || nowTime == 74400){
+	 // 	var audio = new Audio(); 
+		// audio.src='https://static.inven.co.kr/image_2011/black/334.mp3'; 
+		// audio.load(); 
+		// audio.play(); 
+		// //console.log(nowTime);
+	 // }
+ 
+	 if(nowTime >= 2400 && nowTime < 4800){	// 00:40~1:20 
+	 //	console.log(nightTime);
+	 	gametime = conv_gametimeDay(2400, nowTime, nightTime, 'pm'); 
+	 }else if(nowTime >= 4800 && nowTime < 16800){ // 120~4:40
+	 	gametime = conv_gametimeDay(4800, nowTime, dayTime, 'am');   
+	 }else if(nowTime >= 16800 && nowTime < 19200){ // 4:40 ~ 5:20
+	 	gametime = conv_gametimeDay(16800, nowTime, nightTime, 'pm');  
+	 }else if(nowTime >= 19200 && nowTime < 31200){ // 5:20 ~ 9:40
+	 	gametime = conv_gametimeDay(19200, nowTime, dayTime, 'am');   
+	 }else if(nowTime >= 31200 && nowTime < 33600){ // 8:40~ 9:20 
+	 	gametime = conv_gametimeDay(31200, nowTime, nightTime, 'pm');  
+	 }else if(nowTime >= 33600 && nowTime < 45600){ // 9:20~ 12:40
+	 	gametime = conv_gametimeDay(33600, nowTime, dayTime, 'am');   
+	 }else if(nowTime >= 45600 && nowTime < 48000){	// 12:40 ~ 13:20  
+	 	gametime = conv_gametimeDay(45600, nowTime, nightTime, 'pm');  
+	 }else if(nowTime >= 48000 && nowTime < 60000){ 	// 13: 20 ~ 16:40 
+	 	gametime = conv_gametimeDay(48000, nowTime, dayTime, 'am');   
+	 }else if(nowTime >= 60000 && nowTime < 62400){		// 16:40~ 17:20 
+	 	gametime = conv_gametimeDay(60000, nowTime, nightTime, 'pm');   
+	 }else if(nowTime >= 62400 && nowTime < 74400){ 	// 17:20~ 20:40 
+	 	gametime = conv_gametimeDay(62400, nowTime, dayTime, 'am');   
+	 }else if(nowTime >= 74400 && nowTime < 76800){ 	// 20:40  ~ 21:20
+	 	gametime = conv_gametimeDay(74400, nowTime, nightTime, 'pm');  
+	 }else if(nowTime >= 76800){
+	 	gametime = conv_gametimeDay(76800, nowTime, dayTime, 'am');   
+	 }else if(nowTime >= 0 && nowTime < 2400){
+	 	// 00시 초기화 
+	 	// 게임시간 밤
+		 var nightH = 19; 
+		 var nightM = 0; 
+		 var nightS = 0; 
+		 nightTime = conv_seconds(nightH, nightM, nightS); 
+	 	 gametime = conv_gametimeDay(0, nowTime, nightTime, 'am');   
+	 }
+ 
+ 	//console.log('게임시간 - '+conv_time(gametime));
+	 gametime = conv_time(gametime);
+	 
+	 // am pm 계산 
+ 	if(gametime.substring(0,2) >= 12){
+	 	$('#daytype').removeClass('am').text(); 
+	 	$('#daytype').addClass('pm').text('PM'); 
+	 }else{
+	 	$('#daytype').removeClass('pm').text(); 
+	 	$('#daytype').addClass('am').text('AM'); 
+	 }
+
+	hh = gametime.substring(0,2); 
+ 	if(hh > 12){ 
+ 		if(hh >= 22){
+ 			hours2 = gametime.substring(0,2)-12;  
+ 			hours1 = 1;  
+ 			hours2 = hours2-10; 
+ 		}  
+ 		else{
+ 			hours1 = 0;
+ 			hours2 = gametime.substring(0,2)-12;
+ 		}
+ 	}else{
+ 		hours1 = gametime.substring(0,1);
+ 		hours2 = gametime.substring(1,2);
+ 	}	 
+ 	// 스타일 초기화 
+ 	for(i=0; i<=9; i++){
+ 		$('#hours1').removeClass('num'+i); 
+ 		$('#hours2').removeClass('num'+i); 
+ 		$('#minutes1').removeClass('num'+i); 
+ 		$('#minutes2').removeClass('num'+i); 
+ 	} 
+
+	// $('#hours1').addClass('num'+gametime.substring(0,1)); 
+	// $('#hours2').addClass('num'+gametime.substring(1,2)); 	
+	// 게임시간 출력 
+	$('#hours1').addClass('num'+hours1).text(hours1); 
+	$('#hours2').addClass('num'+hours2).text(hours2); 
+	$('#minutes1').addClass('num'+gametime.substring(3,4)).text(gametime.substring(3,4)); 
+	$('#minutes2').addClass('num'+gametime.substring(4,5)).text(gametime.substring(4,5)); 
+	// $('#minutes2').addClass('num'+i);  
+
+ 	// Timer = setTimeout("blackclock()", 1000); 
+}
+ </script>                    </div>
+                            </div>
+    
+        <h3 class="" style="">검은사막 화제집중</h3>
+    <ul class="list">
+        <li class="firstMenuItem"><span><a href="https://www.inven.co.kr/webzine/news/?site=black">리포터 뉴스</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4123"><span style="font-weight: bold;color: #FF0000;">실시간 유저뉴스</span><em class="hot1"></em></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4166"><span>이슈토론/의견 게시판</span><em class="hot1"></em></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4125">아이템 자랑하기</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/5043"><span style="font-weight: bold;color: #FF8C00;"> └ 강화 후기 게시판</span></a></span></li><li><span><a href="http://black.inven.co.kr/community/cert/">관리자 인증 게시물</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/3584">팁과 노하우</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/3584?category=지식"> └ 지식 정보 모음</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4632"><span style="font-weight: bold;color: #2E8B57;">용병, 파티모집/쿠폰</span></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/5622"><span style="font-weight: bold;color: #FF56FE;">생활 종합 게시판</span></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4168">탈것 정보 공유 게시판</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4144">제작 레시피/재료 공유</a></span></li><li class="lastMenuItem"><span><a href="https://www.inven.co.kr/board/black/4157">바란다/버그 제보</a></span></li>    </ul>
+        <h3 class="" style="">미디어 게시판</h3>
+    <ul class="list">
+        <li class="firstMenuItem"><span><a href="https://www.inven.co.kr/board/black/3849"><span style="font-weight: bold;color: #1E90FF;">커스터마이징 자랑</span><em class="hot1"></em></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4133"> └ 소스 공유&amp;요청</a></span></li><li><span><a href="https://www.inven.co.kr/board/black/4165"><span style="font-weight: bold;color: #1E90FF;">의상 자랑&amp;염색 정보</span></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/5576"><span style="font-weight: bold;color: #DAA520;">음악 게시판</span><em class="new1"></em></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/3586">스크린샷 게시판</a></span></li><li><span><a href="https://black.inven.co.kr/dataninfo/video"><span style="font-weight: bold;color: #FFDEAD;">유튜브 모아보기</span></a></span></li><li><span><a href="https://www.inven.co.kr/board/black/3587">동영상 게시판</a></span></li><li class="lastMenuItem"><span><a href="https://www.inven.co.kr/board/black/3608">팬아트 갤러리</a></span></li>    </ul>
+    <div class="ad-left">
+        <script type="text/javascript">INVEN.Ad.showAdLeft('black');</script><iframe id="comAdLeft" name="comAdLeft" width="200" height="200" frameborder="0" marginwidth="0" marginheight="0" topmargin="0" scrolling="no" src="https://zicf.inven.co.kr/RealMedia/ads/adstream_sx.ads/inven/black@x15?ipos=comAdLeft"></iframe>
+</div>
+
+
+
+    
+    <div class="banner-layout2">
+                        <a href="https://www.kr.playblackdesert.com/Main/Index" target="_blank">
+                    <img src="https://static.inven.co.kr/image_2011/black/renewal/banner/blackhome_159x48_1.jpg" alt="검은사막 공식홈페이지">
+                </a>
+            </div>
+</div>
+ 
+ 
+ 
+ </div> <!-- div_left -->
+ 
+ 
+ 
+ 
+ <div id="div_con"><font>내용</font></div>
+ <div id="div_bottom">마무리</div>
+</div>
+
+
+
+
+
+</body>
+</html>
