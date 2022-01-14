@@ -24,45 +24,40 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginForm(Model model,HttpSession session,LoginVO loginVO) throws Exception {
-		
-		loginService.loginCookie(loginVO);
+	public String loginForm(Model model,HttpSession session,LoginVO loginVO,
+			HttpServletResponse response) throws Exception {
 		session.removeAttribute("sessionLogin");
-		
-		
 		/* System.out.println(session.getAttribute("sessionLogin")); */
 		
 		model.addAttribute("userVO", new SignupVO());
 		return "login/login";
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginSession(Model model, HttpServletRequest request, LoginVO loginVO
 			,HttpServletResponse response, HttpSession session)
 			throws Exception {
-		loginService.loginCookie(loginVO);
-	
-//		loginService.loginSelect(loginVO);
-//
-//		if (loginService.loginSelect(loginVO) == null) {
-//
-//			
-//			session.setAttribute("sessionLogin", null);
-//
-//			return "redirect:/login";
-//		} else {
-//
-//			session.setAttribute("sessionLogin", loginService.loginSelect(loginVO));
-//			
-//			System.out.println(session.getAttribute("sessionLogin"));
-//			System.out.println(request.getSession());
-//
-//			return "redirect:/main";
-//		}
 		
-		return "";
+		loginService.loginSelect(loginVO);
 
+		if (loginService.loginSelect(loginVO) == null) {
+
+			
+			session.setAttribute("sessionLogin", null);
+
+			return "redirect:/login";
+		} else {
+
+			session.setAttribute("sessionLogin", loginService.loginSelect(loginVO));
+			
+			System.out.println(session.getAttribute("sessionLogin"));
+			System.out.println(request.getSession());
+
+			return "redirect:/main";
+		}
+		
+		
 	}
 	
 	

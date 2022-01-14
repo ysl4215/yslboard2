@@ -25,23 +25,14 @@ public class SignupController {
 	}
 	
 	@RequestMapping(value = "/signupForm", method = RequestMethod.POST)
-	public String signupForm2(Model model, SignupVO signupvo, @RequestParam("id") String id,
-			@RequestParam("pw") String pw, @RequestParam("name") String name,
+	public String signupForm2(Model model, SignupVO signupvo, 
 			@RequestParam("yy") String yy, @RequestParam("mm") String mm,
-			@RequestParam("dd") String dd, @RequestParam("gender") String gender,
-			@RequestParam("email") String email, @RequestParam("phone") String phone) 
-			throws Exception {
+			@RequestParam("dd") String dd) throws Exception {
 			
-		signupvo.setId(id);
-		signupvo.setPw(pw);
-		signupvo.setName(name);
 		signupvo.setBirth(yy+"-"+mm+"-"+dd);
-		signupvo.setGender(gender);
-		signupvo.setEmail(email);
-		signupvo.setPhone(phone);
 		signupservice.signupInsert(signupvo);
-		
 		
 		return "main/main";
 	}
+	
 }

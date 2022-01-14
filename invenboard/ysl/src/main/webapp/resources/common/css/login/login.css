@@ -1,4 +1,5 @@
 .headline {
+	position: static;
 	width: 100%;
 	margin: 0 auto;
 	/*height: 112px;*/
@@ -8,23 +9,32 @@
 	cursor:pointer; 
 	cursor:hand; 
 	text-align: center;
-	
 }
 
 .mobileLogin {
-	text-align: center;
+  position: static;
+text-align: center;
 }
 
-.mobileLogin.login {
-	text-align: center;
+.mobileLogin .login .id{
+	text-align: left;
+	width: 450px;
+	height: 40px;
 }
-
+.mobileLogin .login .pw{
+	text-align: left;
+	width: 450px;
+	height: 40px;
+}
 
 .mobileLogin .otherLogin .btn{
 	font-size: 1em;
 	width: 150px;
 } 
 
+.mobileLogin .userMenu .idpwFind{
+	text-align: right;
+}
 
 
 

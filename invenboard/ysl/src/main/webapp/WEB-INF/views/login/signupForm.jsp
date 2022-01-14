@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-<link rel="stylesheet" href="/resources/common/login/signupForm.css"  />
+<link rel="stylesheet" href="/resources/common/css/login/signupForm.css"  />
 
 <title>Insert title here</title>
 </head>
